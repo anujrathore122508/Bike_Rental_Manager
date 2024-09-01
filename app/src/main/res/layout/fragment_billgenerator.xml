@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="-170dp"
+    tools:context=".MainActivity">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGenerateBill"
+        android:clipToPadding="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Your EditText fields start here -->
+            <EditText
+                android:id="@+id/editTextHelmet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Helmet: Yes/No" />
+
+            <EditText
+                android:id="@+id/editTextDateOfBooking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date of Booking" />
+
+            <EditText
+                android:id="@+id/editTextBookingID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Booking ID" />
+
+            <EditText
+                android:id="@+id/editTextKMLimit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="K.M. Limit"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editStartingKM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Starting km"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editEndingKM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ending K.M."
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editTotalKM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Total K.M."
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editIDDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID-Details: Aadhar Card No, Pan Card No, Driving License No"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editHirerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hirer Name"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editHirerMobNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hirer Mob No."
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editRelativeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Relative Name"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editRelativeMobNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Relative Mob No."
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editVehicleName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Vehicle Name"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editLocalAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Local Add."
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editStartingDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Starting Date"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editStartingTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Starting Time"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editReturnDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Return Date"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editReturnTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Return Time"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editSecurityDeposit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Security Deposit"
+                android:inputType="number"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary"/>
+
+            <EditText
+                android:id="@+id/editActualRent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Actual Rent"
+                android:inputType="number"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary"/>
+
+            <EditText
+                android:id="@+id/editLateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Late Time"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <EditText
+                android:id="@+id/editFinalTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Final Total"
+                android:inputType="number"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+    <Button
+        android:id="@+id/buttonGenerateBill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Generate Bill"
+        android:textColor="@android:color/white"
+        android:backgroundTint="?attr/colorPrimary"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9"/> <!-- Adjusts the width -->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

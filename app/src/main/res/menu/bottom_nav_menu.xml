@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_BillGenerator"
+        android:icon="@drawable/baseline_edit_document_24"
+        android:title="Bill Generator" />
+
+    <item
+        android:id="@+id/navigation_VehicleAvailability"
+        android:icon="@drawable/baseline_two_wheeler_24"
+        android:title="Vehicle Availability" />
+
+    <item
+        android:id="@+id/navigation_analysis"
+        android:icon="@drawable/baseline_analytics_24"
+        android:title="Analysis" />
+
+</menu>

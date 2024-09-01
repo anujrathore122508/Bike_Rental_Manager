@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_BillGenerator">
+
+    <fragment
+        android:id="@+id/navigation_BillGenerator"
+        android:name="com.example.bikerentalmanager.ui.BillGenerator.BillGeneratorFragment"
+        android:label="billGenerator"
+        tools:layout="@layout/fragment_billgenerator" />
+
+    <fragment
+        android:id="@+id/navigation_VehicleAvailability"
+        android:name="com.example.bikerentalmanager.ui.VehicleAvailability.VehicleAvailabilityFragment"
+        android:label="VehicleAvailability"
+        tools:layout="@layout/fragment_vehicleavailability" />
+
+    <fragment
+        android:id="@+id/navigation_analysis"
+        android:name="com.example.bikerentalmanager.ui.Analysis.AnalysisFragment"
+        android:label="analysis"
+        tools:layout="@layout/fragment_analysis" />
+</navigation>
