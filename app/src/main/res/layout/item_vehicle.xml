@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Vehicle Name -->
+    <TextView
+        android:id="@+id/vehicle_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Name"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="22sp"/>
+
+    <!-- Vehicle Image -->
+    <ImageView
+        android:id="@+id/vehicle_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="Vehicle Image"
+        android:scaleType="fitCenter"/>
+
+    <!-- Rent Button -->
+    <Button
+        android:id="@+id/rent_now_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Available "
+        android:backgroundTint="#000"
+        android:textColor="#fff"/>
+</LinearLayout>
