@@ -4,6 +4,7 @@ import android.Manifest.permission
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.ClipData
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -20,6 +22,7 @@ import androidx.fragment.app.Fragment
 import com.example.bikerentalmanager.BuildConfig
 import com.example.bikerentalmanager.R
 import com.example.bikerentalmanager.databinding.FragmentBillgeneratorBinding
+import com.example.bikerentalmanager.ui.VehicleAvailability.DatabaseHelper
 import com.google.android.material.snackbar.Snackbar
 import com.itextpdf.text.BaseColor
 import com.itextpdf.text.Document
@@ -38,6 +41,7 @@ class BillGeneratorFragment : Fragment() {
 
     private var _binding: FragmentBillgeneratorBinding? = null
     private val binding get() = _binding!!
+    private lateinit var dbHelper: DatabaseHelper
 
     // Initialize colors for table headers
     var headColor: BaseColor = WebColors.getRGBColor("#DEDEDE")
@@ -69,6 +73,11 @@ class BillGeneratorFragment : Fragment() {
         editTextKMLimit = binding.editTextKMLimit
         editStartingKM = binding.editStartingKM
 
+
+        dbHelper = DatabaseHelper(requireContext())
+
+        // Set up the AutoCompleteTextView for vehicle names
+        setupVehicleNameAutoComplete()
         // Set up click listener for generating the bill
         binding.buttonGenerateBill.setOnClickListener { view ->
             createPassPDF()
@@ -80,7 +89,14 @@ class BillGeneratorFragment : Fragment() {
 
         return root
     }
+    private fun setupVehicleNameAutoComplete() {
+        val vehicleNames = dbHelper.getVehicleNames()
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, vehicleNames)
+        binding.autoCompleteVehicleName.setAdapter(adapter)
 
+        // Optional: Set threshold to show suggestions after typing 1 character
+        binding.autoCompleteVehicleName.threshold = 1
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -150,7 +166,7 @@ class BillGeneratorFragment : Fragment() {
         val hirerMobNo = view?.findViewById<EditText>(R.id.editHirerMobNo)?.text.toString().trim()
         val relativeName = view?.findViewById<EditText>(R.id.editRelativeName)?.text.toString().trim()
         val relativeMobNo = view?.findViewById<EditText>(R.id.editRelativeMobNo)?.text.toString().trim()
-        val vehicleName = view?.findViewById<EditText>(R.id.editVehicleName)?.text.toString().trim()
+        val vehicleName = view?.findViewById<EditText>(R.id.autoCompleteVehicleName)?.text.toString().trim()
         val localAdd = view?.findViewById<EditText>(R.id.editLocalAdd)?.text.toString().trim()
         val startingDate = view?.findViewById<EditText>(R.id.editStartingDate)?.text.toString().trim()
         val startingTime = view?.findViewById<EditText>(R.id.editStartingTime)?.text.toString().trim()
@@ -292,6 +308,38 @@ class BillGeneratorFragment : Fragment() {
         } catch (e: Throwable) {
             e.printStackTrace()
             Toast.makeText(requireContext(), "Failed to create PDF", Toast.LENGTH_SHORT).show()
+        }
+        // After creating the PDF, update the vehicle status
+
+        // Update vehicle status in the database
+        if (vehicleName.isNotEmpty() && startingDate.isNotEmpty() && returnDate.isNotEmpty()) {
+            updateVehicleAvailability(vehicleName, startingDate, returnDate)
+        } else {
+            Toast.makeText(requireContext(), "Please fill in the vehicle name and dates", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun updateVehicleAvailability(vehicleName: String, startDate: String, endDate: String) {
+        // Open database connection
+        val db = dbHelper.writableDatabase
+
+        // Update the vehicle's availability status to 'Rented'
+        val contentValues = ContentValues().apply {
+            put("availability_status", "Rented")
+            put("rented_from", startDate)  // Assuming you have a column for start date
+            put("rented_to", endDate)      // Assuming you have a column for end date
+        }
+
+        val whereClause = "vehicle_name = ?"
+        val whereArgs = arrayOf(vehicleName)
+
+        val rowsUpdated = db.update("vehicles", contentValues, whereClause, whereArgs)
+        if (rowsUpdated > 0) {
+            Log.d("Database", "$vehicleName marked as rented from $startDate to $endDate")
+            Toast.makeText(requireContext(), "$vehicleName is now rented.", Toast.LENGTH_SHORT).show()
+        } else {
+            Log.e("Database", "Failed to update the vehicle availability for $vehicleName")
+            Toast.makeText(requireContext(), "Failed to update vehicle status.", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -110,13 +110,12 @@
                 android:textSize="16sp"
                 android:textColor="?android:attr/textColorPrimary" />
 
-            <EditText
-                android:id="@+id/editVehicleName"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteVehicleName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Vehicle Name"
-                android:textSize="16sp"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:hint="Select Vehicle Name"/>
+
 
             <EditText
                 android:id="@+id/editLocalAdd"
@@ -201,8 +200,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Generate Bill"
-        android:textColor="@android:color/white"
-        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTint="#000"
+        android:textColor="#fff"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
@@ -219,3 +218,4 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

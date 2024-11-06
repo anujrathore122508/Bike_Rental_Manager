@@ -1,22 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.VehicleAvailability.VehicleAvailabilityFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp"> <!-- Optional padding for better layout -->
 
-    <TextView
-        android:id="@+id/text_VehicleAvailability"
+<EditText
+    android:id="@+id/search_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Search vehicles"
+    android:layout_marginTop="-12dp"
+    android:layout_marginBottom="11dp" /> <!-- Space below the search bar -->
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="16dp"> <!-- Space below the buttons -->
+
+    <Button
+        android:id="@+id/button_available"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Available"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#000"
+        android:textColor="#fff"/> <!-- Space between buttons -->
+
+    <Button
+        android:id="@+id/button_rented"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Rented"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#000"
+        android:textColor="#fff"/> <!-- Space between buttons -->
+
+    <Button
+        android:id="@+id/button_upcoming"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Upcoming"
+        android:backgroundTint="#000"
+        android:textColor="#fff"/>
+</LinearLayout>
+    <Button
+        android:id="@+id/setNotificationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Notification"
+        android:backgroundTint="#000"
+        android:textColor="#fff"
+        android:visibility="gone"
+        android:layout_gravity="bottom|center_horizontal"/>
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:layout_marginBottom="30dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/upcomingBookingsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:visibility="gone" /> <!-- Default mein hidden rakhenge aur Upcoming button click pe visible hoga -->
+
+
+</LinearLayout>
